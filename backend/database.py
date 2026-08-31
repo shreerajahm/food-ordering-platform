@@ -1,8 +1,13 @@
+import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "postgresql://food_app:food_app_password@localhost:5432/food_ordering"
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://food_app:food_app_password@localhost:5432/food_ordering"
+)
 
 engine = create_engine(DATABASE_URL)
 
